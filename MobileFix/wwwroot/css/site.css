@@ -1,0 +1,520 @@
+/* =========================================
+   MobileFix
+   Main Application UI
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    margin: 0;
+    background: #f8fafc;
+    color: #111827;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   Application Layout
+   ========================================= */
+
+.mobilefix-app {
+    min-height: 100vh;
+    display: flex;
+}
+
+
+/* =========================================
+   Sidebar
+   ========================================= */
+
+.mobilefix-sidebar {
+    width: 205px;
+    min-width: 205px;
+    min-height: 100vh;
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    padding: 28px 10px;
+}
+
+
+.mobilefix-logo {
+    padding: 0 18px;
+    margin-bottom: 26px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #111827;
+}
+
+
+.mobilefix-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.mobilefix-nav-link {
+    display: block;
+    padding: 11px 12px;
+    border-radius: 8px;
+    color: #374151;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+    .mobilefix-nav-link:hover {
+        background: #f3f4f6;
+        color: #111827;
+    }
+
+
+/* =========================================
+   Main Area
+   ========================================= */
+
+.mobilefix-main {
+    flex: 1;
+    min-width: 0;
+    padding: 34px 28px;
+    background: #f8fafc;
+}
+
+
+/* =========================================
+   Common Page Header
+   ========================================= */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+
+    .page-header h1 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: 600;
+        color: #111827;
+    }
+
+
+    .page-header p {
+        margin: 6px 0 0;
+        color: #64748b;
+        font-size: 14px;
+    }
+
+
+/* =========================================
+   Buttons
+   ========================================= */
+
+.mf-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    border: 0;
+    border-radius: 7px;
+    background: #111827;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+    .mf-primary-btn:hover {
+        background: #1f2937;
+    }
+
+
+.mf-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #111827;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+    .mf-secondary-btn:hover {
+        background: #f9fafb;
+    }
+
+
+/* =========================================
+   Cards
+   ========================================= */
+
+.mf-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+
+.mf-card-header {
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+    .mf-card-header h2 {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+
+    .mf-card-header p {
+        margin: 5px 0 0;
+        color: #64748b;
+        font-size: 13px;
+    }
+
+
+/* =========================================
+   Dashboard Statistics
+   ========================================= */
+
+.mf-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+
+.mf-stat-card {
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+
+    .mf-stat-card span {
+        display: block;
+        margin-bottom: 10px;
+        color: #64748b;
+        font-size: 13px;
+    }
+
+
+    .mf-stat-card strong {
+        display: block;
+        color: #111827;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+
+/* =========================================
+   Tables
+   ========================================= */
+
+.mf-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+.mf-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+    .mf-table th {
+        padding: 12px 20px;
+        background: #ffffff;
+        color: #64748b;
+        text-align: left;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+
+    .mf-table td {
+        padding: 15px 20px;
+        border-top: 1px solid #e5e7eb;
+        color: #374151;
+        font-size: 13px;
+    }
+
+
+        .mf-table td strong {
+            color: #111827;
+        }
+
+
+/* =========================================
+   Status Badges
+   ========================================= */
+
+.mf-status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #334155;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   Forms
+   ========================================= */
+
+.mf-form-card {
+    padding: 22px;
+}
+
+
+.mf-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+
+.mf-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+
+    .mf-form-group.full-width {
+        grid-column: 1 / -1;
+    }
+
+
+    .mf-form-group label {
+        color: #111827;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+
+    .mf-form-group input,
+    .mf-form-group select,
+    .mf-form-group textarea {
+        width: 100%;
+        padding: 11px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 7px;
+        background: #ffffff;
+        color: #111827;
+        font-family: inherit;
+        font-size: 14px;
+        outline: none;
+    }
+
+
+        .mf-form-group input:focus,
+        .mf-form-group select:focus,
+        .mf-form-group textarea:focus {
+            border-color: #94a3b8;
+            box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.15);
+        }
+
+
+    .mf-form-group textarea {
+        min-height: 110px;
+        resize: vertical;
+    }
+
+
+.mf-form-help {
+    color: #64748b;
+    font-size: 12px;
+}
+
+
+.mf-validation {
+    color: #dc2626;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   Search
+   ========================================= */
+
+.mf-search-box {
+    display: flex;
+    gap: 9px;
+    padding: 20px;
+}
+
+
+    .mf-search-box input {
+        flex: 1;
+        padding: 11px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 7px;
+        font-size: 14px;
+        outline: none;
+    }
+
+
+        .mf-search-box input:focus {
+            border-color: #94a3b8;
+        }
+
+
+/* =========================================
+   Details
+   ========================================= */
+
+.mf-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    padding: 22px;
+}
+
+
+.mf-detail-section h3 {
+    margin: 0 0 9px;
+    font-size: 16px;
+}
+
+
+.mf-detail-section p {
+    margin: 4px 0;
+    color: #475569;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   Technician Cards
+   ========================================= */
+
+.mf-technician-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 20px;
+}
+
+
+.mf-technician-card {
+    padding: 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 9px;
+    background: #ffffff;
+}
+
+
+    .mf-technician-card h3 {
+        margin: 0;
+        font-size: 15px;
+    }
+
+
+    .mf-technician-card p {
+        margin: 5px 0;
+        color: #64748b;
+        font-size: 12px;
+    }
+
+
+/* =========================================
+   Empty State
+   ========================================= */
+
+.mf-empty {
+    padding: 35px 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   Responsive
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .mf-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mf-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mf-details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .mobilefix-app {
+        flex-direction: column;
+    }
+
+    .mobilefix-sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+        padding: 16px;
+    }
+
+    .mobilefix-logo {
+        margin-bottom: 12px;
+    }
+
+    .mobilefix-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .mobilefix-nav-link {
+        padding: 9px 10px;
+    }
+
+    .mobilefix-main {
+        padding: 22px 15px;
+    }
+
+    .mf-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header {
+        flex-direction: column;
+    }
+
+    .mf-technician-grid {
+        grid-template-columns: 1fr;
+    }
+}

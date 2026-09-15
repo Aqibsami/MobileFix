@@ -1,0 +1,91 @@
+﻿@model IEnumerable<MobileFix.Models.Technician>
+
+<div class="page-header">
+
+    <div>
+        <h1>Technicians</h1>
+        <p>Add technicians and track who worked on repairs</p>
+    </div>
+
+    <a asp-action="Create"
+       class="mf-primary-btn">
+        + Add Technician
+    </a>
+
+</div>
+
+
+<div class="mf-card">
+
+    @if (!Model.Any())
+    {
+        <div class="mf-empty">
+            No technicians found.
+        </div>
+    }
+    else
+    {
+        <div class="mf-technician-grid">
+
+            @foreach (var technician in Model)
+            {
+                <div class="mf-technician-card">
+
+                    <div style="display:flex; justify-content:space-between; gap:10px;">
+
+                        <div>
+                            <h3>@technician.Name</h3>
+
+                            <p>
+                                @technician.Specialty
+                            </p>
+                        </div>
+
+                        <span class="mf-status">
+                            @(technician.IsActive ? "Active" : "Inactive")
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Repair technician
+                    </p>
+
+
+                    <div style="margin-top:15px; display:flex; gap:8px;">
+
+                        <a asp-action="Edit"
+                           asp-route-id="@technician.Id"
+                           class="mf-secondary-btn">
+                            Edit
+                        </a>
+
+
+                        <form asp-action="ToggleStatus"
+                              method="post">
+
+                            <input type="hidden"
+                                   name="id"
+                                   value="@technician.Id" />
+
+                            <button type="submit"
+                                    class="mf-secondary-btn">
+
+                                @(technician.IsActive
+                                    ? "Set Inactive"
+                                    : "Set Active")
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>

@@ -1,0 +1,63 @@
+﻿@model MobileFix.Models.RepairTicket
+
+<div class="page-header">
+    <div>
+        <h1>Delete Repair</h1>
+        <p>Confirm removal of this repair ticket</p>
+    </div>
+</div>
+
+
+<div class="mf-card mf-form-card">
+
+    <h2>Are you sure?</h2>
+
+    <p>
+        You are about to permanently delete this repair ticket.
+    </p>
+
+    <br />
+
+    <div class="mf-details-grid">
+
+        <div class="mf-detail-section">
+            <h3>Token</h3>
+            <p>@Model.Token</p>
+        </div>
+
+        <div class="mf-detail-section">
+            <h3>Customer</h3>
+            <p>@Model.CustomerName</p>
+        </div>
+
+        <div class="mf-detail-section">
+            <h3>Device</h3>
+            <p>@Model.Brand @Model.Model</p>
+        </div>
+
+        <div class="mf-detail-section">
+            <h3>Status</h3>
+            <p>@Model.Status</p>
+        </div>
+
+    </div>
+
+    <br />
+
+    <form asp-action="Delete" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <button type="submit" class="mf-primary-btn">
+            Yes, Delete
+        </button>
+
+        <a asp-action="Details"
+           asp-route-id="@Model.Id"
+           class="mf-secondary-btn">
+            Cancel
+        </a>
+
+    </form>
+
+</div>

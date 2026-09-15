@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MobileFix</title>
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+</head>
+<body>
+    <div class="mobilefix-app">
+        <!-- Sidebar -->
+        <aside class="mobilefix-sidebar">
+            <div class="mobilefix-logo">
+                MobileFix
+            </div>
+            <nav class="mobilefix-nav">
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="mobilefix-nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" ? "active" : "")">
+                    Dashboard
+                </a>
+
+                <a asp-controller="RepairTicket"
+                   asp-action="Create"
+                   class="mobilefix-nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Create" ? "active" : "")">
+                    New Repair
+                </a>
+
+                <a asp-controller="RepairTicket"
+                   asp-action="Search"
+                   class="mobilefix-nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Search" ? "active" : "")">
+                    Track / Search
+                </a>
+
+                <a asp-controller="Technician"
+                   asp-action="Index"
+                   class="mobilefix-nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Technician" ? "active" : "")">
+                    Technicians
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="mobilefix-main">
+            @RenderBody()
+        </main>
+    </div>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

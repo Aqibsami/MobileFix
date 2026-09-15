@@ -1,0 +1,117 @@
+﻿@model MobileFix.Models.RepairTicket
+
+<div class="page-header">
+    <div>
+        <h1>New Repair Ticket</h1>
+        <p>Record the device and repair information</p>
+    </div>
+</div>
+
+<div class="mf-card mf-form-card">
+
+    <form asp-action="Create" method="post">
+
+        <div asp-validation-summary="All" class="mf-validation"></div>
+
+        <div class="mf-form-grid">
+
+            <div class="mf-form-group">
+                <label asp-for="CustomerName">Customer Name</label>
+                <input asp-for="CustomerName" placeholder="e.g. Ali Khan" />
+                <span asp-validation-for="CustomerName" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="CustomerPhone">Phone</label>
+                <input asp-for="CustomerPhone" placeholder="03xx-xxxxxxx" />
+                <span asp-validation-for="CustomerPhone" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="DeviceType">Device Type</label>
+                <select asp-for="DeviceType">
+                    <option value="">Select device type</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="Tablet">Tablet</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Other">Other</option>
+                </select>
+                <span asp-validation-for="DeviceType" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="Brand">Brand</label>
+                <input asp-for="Brand" placeholder="Samsung" />
+                <span asp-validation-for="Brand" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="Model">Model</label>
+                <input asp-for="Model" placeholder="Galaxy A15" />
+                <span asp-validation-for="Model" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="IMEI">IMEI / Serial Number</label>
+                <input asp-for="IMEI" placeholder="Device verification" />
+                <span asp-validation-for="IMEI" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group full-width">
+                <label asp-for="Issue">Reported Issue</label>
+                <textarea asp-for="Issue"
+                          placeholder="Customer says phone is not charging..."></textarea>
+                <span asp-validation-for="Issue" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="TechnicianId">Technician</label>
+
+                <select asp-for="TechnicianId">
+                    <option value="">Not assigned</option>
+
+                    @foreach (var technician in ViewBag.Technicians)
+                    {
+                        <option value="@technician.Id">
+                            @technician.Name — @technician.Specialty
+                        </option>
+                    }
+                </select>
+
+                <span class="mf-form-help">
+                    Technician can be assigned when the repair is received.
+                </span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="EstimatedCost">Estimated Cost</label>
+                <input asp-for="EstimatedCost"
+                       type="number"
+                       step="0.01"
+                       placeholder="2500" />
+                <span asp-validation-for="EstimatedCost" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="Status">Status</label>
+
+                <select asp-for="Status">
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </div>
+
+        </div>
+
+        <br />
+
+        <button type="submit" class="mf-primary-btn">
+            Create Ticket & Generate Token
+        </button>
+
+    </form>
+
+</div>

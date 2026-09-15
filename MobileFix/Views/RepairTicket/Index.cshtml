@@ -1,0 +1,97 @@
+﻿@model IEnumerable<MobileFix.Models.RepairTicket>
+
+<div class="page-header">
+
+    <div>
+        <h1>Repair Tickets</h1>
+        <p>View and manage all repair tickets</p>
+    </div>
+
+    <a asp-action="Create" class="mf-primary-btn">
+        + New Repair
+    </a>
+
+</div>
+
+
+<div class="mf-card">
+
+    @if (!Model.Any())
+    {
+        <div class="mf-empty">
+            No repair tickets found.
+        </div>
+    }
+    else
+    {
+        <div class="mf-table-wrapper">
+
+            <table class="mf-table">
+
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>Customer</th>
+                        <th>Device</th>
+                        <th>Technician</th>
+                        <th>Status</th>
+                        <th>Estimate</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var ticket in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    @ticket.Token
+                                </strong>
+                            </td>
+
+                            <td>
+                                @ticket.CustomerName
+                            </td>
+
+                            <td>
+                                @ticket.Brand @ticket.Model
+                            </td>
+
+                            <td>
+                                @(ticket.Technician?.Name ?? "Unassigned")
+                            </td>
+
+                            <td>
+                                <span class="mf-status">
+                                    @ticket.Status
+                                </span>
+                            </td>
+
+                            <td>
+                                Rs. @ticket.EstimatedCost
+                            </td>
+
+                            <td>
+
+                                <a asp-action="Details"
+                                   asp-route-id="@ticket.Id"
+                                   class="mf-secondary-btn">
+                                    View
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+
+</div>

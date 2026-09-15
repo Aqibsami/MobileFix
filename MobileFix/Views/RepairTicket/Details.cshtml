@@ -1,0 +1,112 @@
+﻿@model MobileFix.Models.RepairTicket
+
+<div class="page-header">
+    <div>
+        <h1>Repair Details</h1>
+        <p>View complete repair ticket information</p>
+    </div>
+
+    <div>
+        <a asp-action="Edit"
+           asp-route-id="@Model.Id"
+           class="mf-secondary-btn">
+            Edit
+        </a>
+
+        <a asp-action="Delete"
+           asp-route-id="@Model.Id"
+           class="mf-secondary-btn">
+            Delete
+        </a>
+    </div>
+</div>
+
+
+<div class="mf-card">
+
+    <div class="mf-card-header">
+        <h2>@Model.Token</h2>
+
+        <p>
+            Repair Token
+        </p>
+    </div>
+
+
+    <div class="mf-details-grid">
+
+        <div class="mf-detail-section">
+            <h3>Customer</h3>
+
+            <p>@Model.CustomerName</p>
+
+            <p>@Model.CustomerPhone</p>
+        </div>
+
+
+        <div class="mf-detail-section">
+            <h3>Device</h3>
+
+            <p>
+                @Model.DeviceType —
+                @Model.Brand @Model.Model
+            </p>
+
+            <p>
+                IMEI / Serial:
+                @Model.IMEI
+            </p>
+        </div>
+
+
+        <div class="mf-detail-section">
+            <h3>Repair</h3>
+
+            <p>@Model.Issue</p>
+        </div>
+
+
+        <div class="mf-detail-section">
+            <h3>Status</h3>
+
+            <p>
+                <span class="mf-status">
+                    @Model.Status
+                </span>
+            </p>
+        </div>
+
+
+        <div class="mf-detail-section">
+            <h3>Technician</h3>
+
+            <p>
+                @(Model.Technician?.Name ?? "Not Assigned")
+            </p>
+        </div>
+
+
+        <div class="mf-detail-section">
+            <h3>Cost & Date</h3>
+
+            <p>
+                Estimated:
+                <strong>Rs. @Model.EstimatedCost</strong>
+            </p>
+
+            <p>
+                Received:
+                @Model.CreatedAt.ToString("yyyy-MM-dd")
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<br />
+
+<a asp-action="Index" class="mf-secondary-btn">
+    Back to Repairs
+</a>

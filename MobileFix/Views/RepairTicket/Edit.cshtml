@@ -1,0 +1,120 @@
+﻿@model MobileFix.Models.RepairTicket
+
+<div class="page-header">
+    <div>
+        <h1>Edit Repair</h1>
+        <p>Update repair ticket information</p>
+    </div>
+</div>
+
+
+<div class="mf-card mf-form-card">
+
+    <form asp-action="Edit" method="post">
+
+        <div asp-validation-summary="All" class="mf-validation"></div>
+
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Token" />
+        <input type="hidden" asp-for="CreatedAt" />
+
+        <div class="mf-form-grid">
+
+            <div class="mf-form-group">
+                <label asp-for="CustomerName">Customer Name</label>
+                <input asp-for="CustomerName" />
+                <span asp-validation-for="CustomerName" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="CustomerPhone">Phone</label>
+                <input asp-for="CustomerPhone" />
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="DeviceType">Device Type</label>
+                <input asp-for="DeviceType" />
+                <span asp-validation-for="DeviceType" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="Brand">Brand</label>
+                <input asp-for="Brand" />
+                <span asp-validation-for="Brand" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="Model">Model</label>
+                <input asp-for="Model" />
+                <span asp-validation-for="Model" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="IMEI">IMEI / Serial</label>
+                <input asp-for="IMEI" />
+            </div>
+
+            <div class="mf-form-group full-width">
+                <label asp-for="Issue">Reported Issue</label>
+                <textarea asp-for="Issue"></textarea>
+                <span asp-validation-for="Issue" class="mf-validation"></span>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="TechnicianId">Technician</label>
+
+                <select asp-for="TechnicianId">
+
+                    <option value="">
+                        Not assigned
+                    </option>
+
+                    @foreach (var technician in ViewBag.Technicians)
+                    {
+                        <option value="@technician.Id">
+                            @technician.Name — @technician.Specialty
+                        </option>
+                    }
+
+                </select>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="Status">Status</label>
+
+                <select asp-for="Status">
+
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
+
+                </select>
+            </div>
+
+            <div class="mf-form-group">
+                <label asp-for="EstimatedCost">Estimated Cost</label>
+
+                <input asp-for="EstimatedCost"
+                       type="number"
+                       step="0.01" />
+            </div>
+
+        </div>
+
+        <br />
+
+        <button type="submit" class="mf-primary-btn">
+            Save Changes
+        </button>
+
+        <a asp-action="Details"
+           asp-route-id="@Model.Id"
+           class="mf-secondary-btn">
+            Cancel
+        </a>
+
+    </form>
+
+</div>

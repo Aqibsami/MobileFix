@@ -1,0 +1,93 @@
+﻿@model MobileFix.Models.Technician
+
+<div class="page-header">
+
+    <div>
+        <h1>Edit Technician</h1>
+        <p>Update technician information</p>
+    </div>
+
+</div>
+
+
+<div class="mf-card mf-form-card">
+
+    <form asp-action="Edit" method="post">
+
+        <div asp-validation-summary="All"
+             class="mf-validation">
+        </div>
+
+        <input type="hidden"
+               asp-for="Id" />
+
+
+        <div class="mf-form-grid">
+
+            <div class="mf-form-group">
+
+                <label asp-for="Name">
+                    Technician Name
+                </label>
+
+                <input asp-for="Name" />
+
+                <span asp-validation-for="Name"
+                      class="mf-validation">
+                </span>
+
+            </div>
+
+
+            <div class="mf-form-group">
+
+                <label asp-for="Specialty">
+                    Specialty
+                </label>
+
+                <input asp-for="Specialty" />
+
+                <span asp-validation-for="Specialty"
+                      class="mf-validation">
+                </span>
+
+            </div>
+
+
+            <div class="mf-form-group">
+
+                <label asp-for="IsActive">
+                    Status
+                </label>
+
+                <select asp-for="IsActive">
+
+                    <option value="true">
+                        Active
+                    </option>
+
+                    <option value="false">
+                        Inactive
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <br />
+
+        <button type="submit"
+                class="mf-primary-btn">
+            Save Changes
+        </button>
+
+        <a asp-action="Index"
+           class="mf-secondary-btn">
+            Cancel
+        </a>
+
+    </form>
+
+</div>

@@ -1,0 +1,137 @@
+﻿@using MobileFix.Models
+
+<div class="mobilefix-dashboard">
+
+    <div class="dashboard-header">
+        <div>
+            <h1>Repair Dashboard</h1>
+            <p>Simple repair tracking for your shop</p>
+        </div>
+
+        <a asp-controller="RepairTicket"
+           asp-action="Create"
+           class="mf-primary-btn">
+            + New Repair
+        </a>
+    </div>
+
+
+    <!-- Statistics -->
+
+    <div class="mf-stats">
+
+        <div class="mf-stat-card">
+            <span>Total Repairs</span>
+            <strong>@ViewBag.TotalRepairs</strong>
+        </div>
+
+        <div class="mf-stat-card">
+            <span>Pending</span>
+            <strong>@ViewBag.Pending</strong>
+        </div>
+
+        <div class="mf-stat-card">
+            <span>In Progress</span>
+            <strong>@ViewBag.InProgress</strong>
+        </div>
+
+        <div class="mf-stat-card">
+            <span>Ready / Completed</span>
+            <strong>@ViewBag.Completed</strong>
+        </div>
+
+    </div>
+
+
+    <!-- Recent Repairs -->
+
+    <div class="mf-card">
+
+        <div class="mf-card-header">
+            <div>
+                <h2>Recent Repairs</h2>
+                <p>Latest repair tickets</p>
+            </div>
+
+            <a asp-controller="RepairTicket"
+               asp-action="Search"
+               class="mf-link">
+                Track / Search
+            </a>
+        </div>
+
+
+        @if (ViewBag.RecentRepairs != null &&
+             ViewBag.RecentRepairs.Count > 0)
+        {
+            <div class="mf-table-wrapper">
+
+                <table class="mf-table">
+
+                    <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Customer</th>
+                            <th>Device</th>
+                            <th>Status</th>
+                            <th>Technician</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (RepairTicket ticket in ViewBag.RecentRepairs)
+                        {
+                            <tr>
+
+                                <td>
+                                    <strong>@ticket.Token</strong>
+                                </td>
+
+                                <td>
+                                    @ticket.CustomerName
+                                </td>
+
+                                <td>
+                                    @ticket.Brand @ticket.Model
+                                </td>
+
+                                <td>
+                                    <span class="mf-status">
+                                        @ticket.Status
+                                    </span>
+                                </td>
+
+                                <td>
+                                    @(ticket.Technician?.Name ?? "Not Assigned")
+                                </td>
+
+                                <td>
+                                    <a asp-controller="RepairTicket"
+                                       asp-action="Details"
+                                       asp-route-id="@ticket.Id"
+                                       class="mf-details-link">
+                                        Details
+                                    </a>
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        }
+        else
+        {
+            <div class="mf-empty">
+                No repair tickets found.
+            </div>
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,70 @@
+﻿@model MobileFix.Models.Technician
+
+<div class="page-header">
+
+    <div>
+        <h1>Add Technician</h1>
+        <p>Add a technician to your repair shop</p>
+    </div>
+
+</div>
+
+
+<div class="mf-card mf-form-card">
+
+    <form asp-action="Create" method="post">
+
+        <div asp-validation-summary="All"
+             class="mf-validation"></div>
+
+
+        <div class="mf-form-grid">
+
+            <div class="mf-form-group">
+
+                <label asp-for="Name">
+                    Technician Name
+                </label>
+
+                <input asp-for="Name"
+                       placeholder="e.g. Ali Raza" />
+
+                <span asp-validation-for="Name"
+                      class="mf-validation">
+                </span>
+
+            </div>
+
+
+            <div class="mf-form-group">
+
+                <label asp-for="Specialty">
+                    Specialty
+                </label>
+
+                <input asp-for="Specialty"
+                       placeholder="e.g. Screen Repair" />
+
+                <span asp-validation-for="Specialty"
+                      class="mf-validation">
+                </span>
+
+            </div>
+
+        </div>
+
+        <br />
+
+        <button type="submit"
+                class="mf-primary-btn">
+            Add Technician
+        </button>
+
+        <a asp-action="Index"
+           class="mf-secondary-btn">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
